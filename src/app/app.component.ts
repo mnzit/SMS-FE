@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sms';
+  public title: string;
+  public active: boolean;
+  public names: string[] = ["Ritesh", "Aakash", "Manjit"];
+
+  @ViewChild('element')
+  public element!: ElementRef<any>;
+
+  constructor() {
+    this.title = 'sms';
+    this.active = true;
+
+    if ("true") {
+
+    }
+  }
+
+  toggleTitle() {
+    this.active = this.active ? false : true
+  }
+
+  add() {
+    this.names.push(this.element.nativeElement.value)
+  }
 }

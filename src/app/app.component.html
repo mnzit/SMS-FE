@@ -1,3 +1,12 @@
+<h1 *ngIf="active">{{title}}</h1>
+<button (click)="toggleTitle()">Toggle title</button>
+<input type="text" [(ngModel)]="title" />
+<input type="text" [(ngModel)]="title" />
 
-<h1>Starter {{ 2*10 }}</h1>
+<input type="text" #element>
+<button (click)="add()">Add</button>
+<ul *ngFor="let name of names">
+  <li>{{name}}</li>
+</ul>
+
 <router-outlet></router-outlet>
