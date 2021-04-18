@@ -18,6 +18,10 @@ import { DetailComponent } from './components/detail/detail.component';
     CommonModule,
     UsersRoutingModule
   ],
-  exports: [UsersModule]
+  exports: [
+    ViewComponent,
+    ManageComponent,
+    DetailComponent
+  ]
 })
 export class UsersModule { }
