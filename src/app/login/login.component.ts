@@ -1,5 +1,7 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -9,11 +11,12 @@ import { LoginService } from './services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  formGroup: FormGroup
+  formGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
       emailAddress: [null, [Validators.required]],
@@ -24,19 +27,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   login() {
     if (this.formGroup.valid) {
       console.log("Login triggered : " + JSON.stringify(this.formGroup.value));
-      this
-        .loginService
+      this.loginService
         .login(this.formGroup.value)
         .subscribe(
-          (data) => {
-            console.log(data);
+          (data: HttpResponse<any>) => {
+            sessionStorage.setItem("TOKEN", "" + data.headers.get('Authorization'));
+            this.router.navigate(["dashboard"])
           },
-          (error) => {
-            console.error(error)
-          })
+          (error) => { console.error(error) }
+        );
     }
   }
 

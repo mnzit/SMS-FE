@@ -4,18 +4,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
+import { LogoutComponent } from './logout/logout.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './core/authentication/http/token.interceptor';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    CoreModule,
+    LayoutModule,
+    DashboardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

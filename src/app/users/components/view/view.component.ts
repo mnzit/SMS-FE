@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { GenericResponse } from 'src/app/shared/dto/genericResponse';
+import { IUser } from '../../dto/user';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent {
 
-  constructor() { }
+  response: GenericResponse<IUser[]> | undefined;
 
-  ngOnInit(): void {
+  constructor(private userService: UserService) {
+
+    this.userService.getAllUsers().subscribe(
+
+      (response) => this.response = response
+    )
   }
+
 
 }
