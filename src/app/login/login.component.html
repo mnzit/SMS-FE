@@ -205,6 +205,9 @@
         </g>
       </svg>
     </div>
+    <div *ngIf="errorMsg" class="alert alert-dark login-failed" role="alert">
+      {{errorMsg}}
+    </div>
     <!-- Login Form -->
     <form [formGroup]="formGroup" (ngSubmit)="login()">
       <input type="text" formControlName="emailAddress" id="email" class="fadeIn second" name="login"

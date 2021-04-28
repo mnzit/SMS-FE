@@ -12,6 +12,7 @@ import { LoginService } from './services/login.service';
 export class LoginComponent implements OnInit {
 
   formGroup: FormGroup;
+  errorMsg: string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("TOKEN", "" + data.headers.get('Authorization'));
             this.router.navigate(["dashboard"])
           },
-          (error) => { console.error(error) }
+          (error) => { this.errorMsg = error.error.resultDescription; }
         );
     }
   }

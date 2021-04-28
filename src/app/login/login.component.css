@@ -260,3 +260,7 @@ input[type=text]:placeholder {
 #icon {
   width:30%;
 }
+
+.login-failed{
+  margin: 56px 10px 49px 10px;
+}
