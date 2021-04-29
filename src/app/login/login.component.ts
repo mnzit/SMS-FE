@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (data: HttpResponse<any>) => {
             sessionStorage.setItem("TOKEN", "" + data.headers.get('Authorization'));
+            console.log(data);
+            sessionStorage.setItem("ROLE", data.body.data.authorities)
             this.router.navigate(["dashboard"])
           },
           (error) => { this.errorMsg = error.error.resultDescription; }

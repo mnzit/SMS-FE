@@ -10,6 +10,11 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  isAdminOrStaff(): boolean {
+    return sessionStorage.getItem("ROLE") === "ADMIN" || sessionStorage.getItem("ROLE") === "STAFF";
   }
 
 }

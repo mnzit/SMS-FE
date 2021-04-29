@@ -11,5 +11,6 @@ export class CredentialsService {
 
   logOut(){
     sessionStorage.removeItem("TOKEN");
+    sessionStorage.removeItem("ROLE");
   }
 }

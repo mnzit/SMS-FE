@@ -5,6 +5,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { ViewComponent } from './components/view/view.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { CreateComponent } from './components/create/create.component';
 
 
 
@@ -12,7 +13,8 @@ import { DetailComponent } from './components/detail/detail.component';
   declarations: [
     ViewComponent,
     ManageComponent,
-    DetailComponent
+    DetailComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
