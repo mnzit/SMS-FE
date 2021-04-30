@@ -6,6 +6,7 @@ import { ViewComponent } from './components/view/view.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { CreateComponent } from './components/create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { CreateComponent } from './components/create/create.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     ViewComponent,

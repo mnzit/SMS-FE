@@ -11,6 +11,7 @@ import { UsersModule } from './users/users.module';
 import { LogoutComponent } from './logout/logout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/authentication/http/token.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { TokenInterceptor } from './core/authentication/http/token.interceptor';
     UsersModule,
     CoreModule,
     LayoutModule,
-    DashboardModule
+    DashboardModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
