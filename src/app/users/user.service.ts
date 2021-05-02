@@ -29,11 +29,25 @@ export class UserService {
       )
   }
 
-  getRoles():Observable<GenericResponse<IRole[]>> {
+  getRoles(): Observable<GenericResponse<IRole[]>> {
     return this.http
       .get<GenericResponse<IRole[]>>(
         ApiConstants.generatePath(ApiConstants.ROLES),
       );
   }
 
+  getUserById(id: any): Observable<GenericResponse<IUser>> {
+    return this.http
+      .get<GenericResponse<IUser>>(
+        ApiConstants.generatePath(ApiConstants.USERS, id),
+      );
+  }
+
+  updateUser(request: any, id: any): Observable<GenericResponse<any>> {
+    return this.http
+      .post<GenericResponse<any>>(
+        ApiConstants.generatePath(ApiConstants.USERS, ApiConstants.UPDATE, id),
+        request
+      )
+  }
 }

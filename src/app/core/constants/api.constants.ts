@@ -10,6 +10,7 @@ export class ApiConstants {
 
 
   static readonly SAVE = 'save';
+  static readonly UPDATE = 'update';
 
   static generatePath(...path: string[]) {
     return path.reduce((x, y) => `${x}/${y}`, this.BE_ENDPOINT);
