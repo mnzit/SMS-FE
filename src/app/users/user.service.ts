@@ -50,4 +50,11 @@ export class UserService {
         request
       )
   }
+
+  downloadUsersExcel() {
+    return this.http.get(
+      ApiConstants.generatePath(ApiConstants.USERS, ApiConstants.DOWNLOAD),
+      { responseType: "arraybuffer" }
+    )
+  }
 }

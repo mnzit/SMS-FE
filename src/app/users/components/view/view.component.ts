@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { GenericResponse } from 'src/app/shared/dto/genericResponse';
+import { exportExcel } from 'src/app/shared/utils/file-export-util';
 import { IUser } from '../../dto/user';
 import { UserService } from '../../user.service';
 
@@ -12,7 +14,7 @@ export class ViewComponent {
 
   response: GenericResponse<IUser[]> | undefined;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private toastr: ToastrService) {
 
     this.userService.getAllUsers().subscribe(
 
@@ -20,5 +22,15 @@ export class ViewComponent {
     )
   }
 
-
+  download() {
+    this.userService
+    .downloadUsersExcel()
+    .subscribe((inputStream: ArrayBuffer) => {
+      if (inputStream) {
+        exportExcel(inputStream, 'users');
+      }
+    }, (error) => {
+        this.toastr.error("Error Downloading Excel")
+    })
+  }
 }

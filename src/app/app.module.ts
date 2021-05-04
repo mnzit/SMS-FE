@@ -12,6 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/authentication/http/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,11 @@ import { ToastrModule } from 'ngx-toastr';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }
   ],
