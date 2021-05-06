@@ -1,0 +1,12 @@
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of response?.reports">
+      <td>{{report.date | date}}</td>
+    </tr>
+  </tbody>
+</table>

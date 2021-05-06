@@ -10,9 +10,11 @@ import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
 import { LogoutComponent } from './logout/logout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './core/authentication/http/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { AttendanceModule } from './attendance/attendance.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     LayoutModule,
     DashboardModule,
     ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    AttendanceModule
   ],
   providers: [
     {

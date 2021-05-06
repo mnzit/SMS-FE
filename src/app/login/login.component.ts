@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("TOKEN", "" + data.headers.get('Authorization'));
             console.log(data);
             sessionStorage.setItem("ROLE", data.body.data.authorities)
+            sessionStorage.setItem("USERID", data.body.data.userId)
             this.router.navigate(["dashboard"])
           },
           (error) => { this.errorMsg = error.error.resultDescription; }

@@ -7,6 +7,7 @@ export class ApiConstants {
   static readonly USERS = 'users';
   static readonly ROLES = 'roles';
   static readonly COURSES = 'courses';
+  static readonly ATTENDANCE = 'attendances';
 
 
   static readonly SAVE = 'save';
